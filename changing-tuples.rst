@@ -115,8 +115,11 @@ As for tuples, make sure they only hold references to immutable objects before t
 
     This post was based on chapter 8 of my `Fluent Python`_ book. That chapter, titled *Object references, mutability and recycling* also covers the semantics of function parameter passing, best practices for mutable parameter handling, shallow copies and deep copies, and the concept of weak references — among other topics. The book focuses on Python 3 but most of its content also applies to Python 2.7, like everything in this post.
 
+    **Python tuples: immutable but potentially changing** by Luciano Ramalho is licensed under a `Creative Commons Attribution-ShareAlike 4.0 International License`_.
+
 .. _Fluent Python: http://shop.oreilly.com/product/0636920032519.do
 .. _Data Model: https://docs.python.org/3/reference/datamodel.html#objects-values-and-types
+.. _Creative Commons Attribution-ShareAlike 4.0 International License: http://creativecommons.org/licenses/by-sa/4.0/
 
 .. raw:: html
 
