@@ -117,3 +117,7 @@ As for tuples, make sure they only hold references to immutable objects before t
 
 .. _Fluent Python: http://shop.oreilly.com/product/0636920032519.do
 .. _Data Model: https://docs.python.org/3/reference/datamodel.html#objects-values-and-types
+
+.. raw:: html
+
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Python tuples: immutable but potentially changing</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/fluentpython/orablog/blob/master/changing-tuples.rst" property="cc:attributionName" rel="cc:attributionURL">Luciano Ramalho</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
