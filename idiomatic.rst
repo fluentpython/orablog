@@ -61,9 +61,9 @@ If you're using Python to teach algorithmic thinking, it may be a good idea to d
 
 On the other hand, professional development teams should strive to write idiomatic code because it's more effective to spread the word about best practices than it is to waste time, over and over again, understanding and debugging all the ways different people decide to code something that has a standard solution. "There should be one -- and preferably only one -- obvious way to do it." wrote Tim Peters in the Zen of Python. A list comprehension is the obvious way to build a list by selecting items from an iterable.
 
-Among people who make a living coding in Python, learning to write idiomatic code is not just a matter of style. It makes economic sense, by improving communications. That's why every profession has a specialized jargon: so that improvised descriptions can be replaced by precise terms with standard meanings. That's also why design patterns were invented.
+Among people who make a living coding in Python, learning to write idiomatic code is not just a matter of style. It makes economic sense, by improving communications. That's why every profession has a specialized jargon: so that improvised descriptions can be replaced by precise terms with standard meanings. Design patterns are cataloged and named for the same reason.
 
-Idiomatic code is also about standard patterns, just on much a smaller scale. But idioms can ease communication many times every day, so they can have a bigger impact on productivity than larger architectural patterns.
+Idiomatic code is also about standard patterns, just on much a smaller scale. Idioms can ease communication many times every day, so they can have a bigger impact on productivity than larger architectural patterns.
 
 
     **Idiomatic Python: it's about communication** by Luciano Ramalho is licensed under a `Creative Commons Attribution-ShareAlike 4.0 International License`_.
