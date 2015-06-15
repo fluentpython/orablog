@@ -28,7 +28,9 @@ That works, but is not "Pythonic". It's not just a matter of style or cleverness
         print(c)
 
 
-Using ``while`` in the first example not only makes it more verbose, it also hides the intent of the loop. If a loop is intended to iterate over items in a sequence (or any iterable), using ``for`` makes that intent clear. Now suppose you want to list the vowels that in a word. Here's one way to do it:
+Using ``while`` in the first example not only makes it more verbose, it also hides the intent of the loop. If a loop is intended to iterate over items in a sequence (or any iterable), using ``for`` makes that intent clear. 
+
+Now suppose you want to list the vowels in a word. Here's one way to do it:
 
 ::
 
