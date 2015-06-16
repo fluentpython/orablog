@@ -1,7 +1,7 @@
 Idiomatic Python: it's about communication
 ==========================================
 
-by Luciano Ramalho, author of `Fluent Python`_
+by Luciano Ramalho, author of `Fluent Python <http://shop.oreilly.com/product/0636920032519.do>`_
 
     Here’s the plan: when someone uses a feature you don’t understand, simply shoot them. This is easier than learning something new, and before too long the only living coders will be writing in an easily understood, tiny subset of Python 0.9.6 <wink>.
 
@@ -29,7 +29,7 @@ That works, but it's "unpythonic". It's not just a matter of style. The real iss
         print(c)
 
 
-Using ``while`` in the first example not only makes it more verbose, it also hides the intent of the loop. If a loop is intended to iterate over items in a sequence (or any iterable), using ``for`` makes that intent clear.
+Using ``while`` in the first example not only makes it more verbose, it also hides the intent of the loop. If a loop is intended to iterate over items in a sequence (or any iterable), using ``for`` makes that intent clear. The ``while`` form should be used when the repetition but depends on other termination criteria and is not tied to sequential iteration.
 
 Sometimes you do need a numeric index besides the current item on each iteration. That's why the ``enumerate`` built-in generator function exists. Here's how it's used:
 
@@ -39,9 +39,9 @@ Sometimes you do need a numeric index besides the current item on each iteration
     for i, c in enumerate(s):
         print(i, '->', c)
 
-Together with tuple unpacking, the ``enumerate`` generator provides an elegant solution to retrieving indexes and items from any iterable -- while avoiding common off-by-one bugs when manually incrementing indexes. By the way, ``enumerate`` takes a second argument to set the starting index, useful when you need the item numbering to start at 1, instead of 0.
+Together with tuple unpacking, the ``enumerate`` `generator function <https://docs.python.org/3/library/functions.html#enumerate>`_ provides an elegant solution to retrieving indexes and items from any iterable -- while avoiding common off-by-one bugs when manually incrementing indexes. By the way, ``enumerate`` takes an optional ``start`` argument to initialize the index counter -- handy when you need the item numbering to start at 1, instead of 0.
 
-Knowing all 68 built-in functions is a good way to improve your Python fluency. Functions like ``enumerate`` and ``zip`` are designed to aid ``for`` loops, while others like ``all``, ``any`` and ``sum`` make explicit loops unnecessary. What these functions do is not rocket science, but your program will be harder to read if you code by hand the logic provided by them. They are built-in because they solve common coding problems. Other built-ins exist to provide fundamental services. And of course, there are the built-in types. Take a look at all the methods and operators supported by ``set``: they can simplify a lot of program logic. That's no accident -- set theory and boolean logic are closely releted.
+Knowing all `68 built-in functions <https://docs.python.org/3/library/functions.html>`_ is a good way to improve your Python fluency. Functions like ``enumerate`` and ``zip`` are designed to aid ``for`` loops, while others like ``all``, ``any`` and ``sum`` make explicit loops unnecessary. What these functions do is not rocket science, but your program will be harder to read if you code by hand the logic provided by them. They are built-in because they solve common coding problems. Other built-ins exist to provide fundamental services. And of course, there are the built-in types. Take a look at all the `methods and operators <https://docs.python.org/3/library/stdtypes.html#types-set>`_ supported by ``set``: they can simplify a lot of program logic. That's no accident -- set theory and  logic are closely related fields.
 
 Now suppose you want to make a list with the vowels that appear in a string. Here's one way to do it:
 
@@ -81,7 +81,6 @@ Idiomatic code is also about standard patterns, just on much a smaller scale. Id
 
     **Idiomatic Python: it's about communication** by Luciano Ramalho is licensed under a `Creative Commons Attribution-ShareAlike 4.0 International License`_.
 
-.. _Fluent Python: http://shop.oreilly.com/product/0636920032519.do
 .. _Creative Commons Attribution-ShareAlike 4.0 International License: http://creativecommons.org/licenses/by-sa/4.0/
 
 .. raw:: html
