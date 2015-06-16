@@ -20,7 +20,7 @@ Iteration is one area of Python that's ripe with interesting idioms. Here is a s
         i += 1
 
 
-That works, but is not "Pythonic". It's not just a matter of style or cleverness. The real issue is readability. This is more readable:
+That works, but it's "unpythonic". It's not just a matter of style. The real issue is readability. This is way more readable:
 
 ::
 
