@@ -41,7 +41,7 @@ Sometimes you do need a numeric index besides the current item on each iteration
 
 Together with tuple unpacking, the ``enumerate`` generator provides an elegant solution to retrieving indexes and items from any itereble -- while avoiding common off-by-one bugs when manually incrementing indexes.
 
-Knowing all built-in functions is a good way to improve your Python fluency. Functions like ``enumerate`` and ``zip`` are designed to aid ``for`` loops, while others like ``all``, ``any`` and ``sum`` make explicit loops unnecessary.
+Knowing all built-in functions is a good way to improve your Python fluency. Functions like ``enumerate`` and ``zip`` are designed to aid ``for`` loops, while others like ``all``, ``any`` and ``sum`` make explicit loops unnecessary. What these functions do is not rocket science, but your program will be harder to read if you code by hand the logic provided by them. 
 
 Now suppose you want to make a list with the vowels that appear in a string. Here's one way to do it:
 
