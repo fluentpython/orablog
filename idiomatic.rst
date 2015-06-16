@@ -9,7 +9,7 @@ by Luciano Ramalho, author of `Fluent Python`_
 
 It's very easy to become productive in Python, but to really reap all the benefits of this very expressive language it's worthwhile to become really fluent in it. Many of Python's best shortcuts are not special cases but actually leverage powerful abstractions that apply across the board. Learning and applying those idioms will make your code shorter, faster and easier to understend by other Pythonistas.
 
-Iteration is one area of Python that's ripe with interesting idioms. Here is a snippet to output a string vertically:
+Iteration is one area of Python that's ripe with powerful idioms. Here is a snippet to output a string vertically:
 
 ::
 
@@ -29,7 +29,19 @@ That works, but it's "unpythonic". It's not just a matter of style. The real iss
         print(c)
 
 
-Using ``while`` in the first example not only makes it more verbose, it also hides the intent of the loop. If a loop is intended to iterate over items in a sequence (or any iterable), using ``for`` makes that intent clear. 
+Using ``while`` in the first example not only makes it more verbose, it also hides the intent of the loop. If a loop is intended to iterate over items in a sequence (or any iterable), using ``for`` makes that intent clear.
+
+Sometimes you do need a numeric index besides the current item on each iteration. That's why the ``enumerate`` built-in generator function exists. Here's how:
+
+::
+
+    s = 'Hello'
+    for i, c in enumerate(s):
+        print(c)
+
+Together with tuple unpacking, the ``enumerate`` generator provides an elegant solution to retrieving indexes and items from any itereble -- while avoiding common off-by-one bugs when manually incrementing indexes.
+
+Knowing all built-in functions is a good way to improve your Python fluency. Functions like ``enumerate`` and ``zip`` are designed to aid ``for`` loops, while others like ``all``, ``any`` and ``sum`` make explicit loops unnecessary.
 
 Now suppose you want to make a list with the vowels that appear in a string. Here's one way to do it:
 
