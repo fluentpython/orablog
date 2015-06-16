@@ -7,8 +7,9 @@ by Luciano Ramalho, author of `Fluent Python`_
 
     *Tim Peters, legendary Python core developer and author of* The Zen of Python.
 
+It's very easy to become productive in Python, but to really reap all the benefits of this very expressive language it's worthwhile to become really fluent in it. Many of Python's best shortcuts are not special cases but actually leverage powerful abstractions that apply across the board. Learning and applying those idioms will make your code shorter, faster and easier to understend by other Pythonistas.
 
-Here is a snippet to output a string vertically:
+Iteration is one area of Python that's ripe with interesting idioms. Here is a snippet to output a string vertically:
 
 ::
 
@@ -49,7 +50,7 @@ That's not as awkward as the first ``while`` example, but it's not as direct as 
     vowels = set('aeiou')
     found = [c for c in s if c.lower() in vowels]
 
-If you are not used to the list comprehension syntax, you're likely to find the ``for`` loop solution more readable. But if you are working with Python on a regular basis, you really should take the time to get comfortable with list comprehensions and other constructs that use similar syntax, like generator expressions, ``dict`` comprehensions and ``set`` comprehensions. Not only are they shorter and faster than the equivalent code using a plain ``for`` loop, they also communicate the intent much better. A ``for`` loop may be doing any number of things, but a list comprehension is designed to do one thing only: to build a list. As soon as I spot a list comprehension, I know the code is building a new list object, not changing an existing list in-place, nor doing something else for the sake of side effects.
+If you are not used to the list comprehension syntax, you're likely to find the ``for`` loop solution more readable. But if you are working with Python on a regular basis, you really should take the time to get comfortable with list comprehensions and other constructs that use similar syntax, like generator expressions, ``dict`` comprehensions and ``set`` comprehensions. Not only are they shorter and faster than the equivalent code using a plain ``for`` loop, they also convey the intent much better. A ``for`` loop may be doing any number of things, but a list comprehension is designed to do one thing only: to build a list. As soon as I spot a list comprehension, I know the code is building a new list object, not changing an existing list in-place, nor doing something else for the sake of side effects.
 
 I have seen code that uses list comprehensions just for the side effects, collapsing what should be a ``for`` loop into a "clever" one-liner. If code was only ever read by computers we'd still be writing numeric op codes by hand. Grace Hopper wrote the first compiler to make it easier for humans to read and write code. If you abuse a list comprehension to collapse a loop and not to build a list, the computer will do your bidding, but the next human reader of that code will waste time deciphering your cleverness.
 
