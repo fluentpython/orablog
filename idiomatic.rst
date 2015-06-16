@@ -9,7 +9,7 @@ by Luciano Ramalho, author of `Fluent Python <http://shop.oreilly.com/product/06
 
 It's very easy to become productive in Python, but to really reap all the benefits of this very expressive language it's worthwhile to become really fluent in it. Many of Python's best shortcuts are not special cases but actually leverage powerful abstractions that apply across the board. Learning and applying those idioms will make your code shorter, faster and easier to understend by other Pythonistas.
 
-Iteration is one area of Python that's ripe with powerful idioms. Here is a snippet to output a string vertically:
+Iteration is one area of Python that's ripe with powerful idioms. Here is a non-idiomaitc snippet to output a string vertically:
 
 ::
 
