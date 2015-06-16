@@ -31,15 +31,15 @@ That works, but it's "unpythonic". It's not just a matter of style. The real iss
 
 Using ``while`` in the first example not only makes it more verbose, it also hides the intent of the loop. If a loop is intended to iterate over items in a sequence (or any iterable), using ``for`` makes that intent clear.
 
-Sometimes you do need a numeric index besides the current item on each iteration. That's why the ``enumerate`` built-in generator function exists. Here's how:
+Sometimes you do need a numeric index besides the current item on each iteration. That's why the ``enumerate`` built-in generator function exists. Here's how it's used:
 
 ::
 
     s = 'Hello'
     for i, c in enumerate(s):
-        print(c)
+        print(i, '->', c)
 
-Together with tuple unpacking, the ``enumerate`` generator provides an elegant solution to retrieving indexes and items from any itereble -- while avoiding common off-by-one bugs when manually incrementing indexes.
+Together with tuple unpacking, the ``enumerate`` generator provides an elegant solution to retrieving indexes and items from any iterable -- while avoiding common off-by-one bugs when manually incrementing indexes. By the way, ``enumerate`` takes a second argument to set the starting index, useful when you need the item numbering to start at 1, instead of 0.
 
 Knowing all built-in functions is a good way to improve your Python fluency. Functions like ``enumerate`` and ``zip`` are designed to aid ``for`` loops, while others like ``all``, ``any`` and ``sum`` make explicit loops unnecessary. What these functions do is not rocket science, but your program will be harder to read if you code by hand the logic provided by them. 
 
