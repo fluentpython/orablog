@@ -31,7 +31,7 @@ That works, but it's "unpythonic". It's not just a matter of style. The real iss
 
 Using ``while`` in the first example not only makes it more verbose, it also hides the intent of the loop. If a loop is intended to iterate over items in a sequence (or any iterable), using ``for`` makes that intent clear. The ``while`` form should be used when the repetition is not tied to sequential iteration but depends on other termination logic.
 
-Handling indexes directly is often a "code smell" in Python -- a sign that code may be improved. However, sometimes you do need a numeric index besides the current item on each iteration. That's why the ``enumerate`` built-in generator function exists. Here's how it's used:
+Handling indexes directly is often a "code smell" in Python -- a sign that code may be improved. Sometimes you do need a numeric index besides the current item on each iteration. That's why the ``enumerate`` built-in generator function exists. Here's how it's used:
 
 ::
 
