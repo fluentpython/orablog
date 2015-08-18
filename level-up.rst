@@ -7,7 +7,9 @@ by Luciano Ramalho, author of `Fluent Python <http://shop.oreilly.com/product/06
 
     *Tim Peters, legendary Python core developer and author of* The Zen of Python.
 
-It's easy to write useful code in Python, but to really become productive you should become fluent in it. Python is highly consistent and expressive. Many of Python's best shortcuts are not special cases but actually leverage powerful abstractions that apply across the board. Learning and applying those idioms will make your code shorter, faster and easier to understend by other Pythonistas.
+It's easy to write useful code in Python, but to be really productive you should become fluent in it. Python is highly consistent and expressive. Many of Python's best shortcuts are not special cases but actually leverage powerful abstractions that apply across the board. Learning and applying those idioms will make your code shorter, faster and easier to understend by other Pythonistas.
+
+Python Data Model...
 
 #1 Avoid reinventing the wheel
 ------------------------------
@@ -18,6 +20,35 @@ This is a one-liner to generate one of 4.7e+21 passwords from the best random by
     'Ai6TAmUrr1cw'
 
 The motto of the Python standard library is "batteries included". From ...
+
+
+
+#_ Grok advanced libraries
+---------------------------
+
+Your Python code probably depends on powerful packages such as `pandas`_, `SQLAlchemy`_ or `Django`_. Such sophisticated tools take full advantage of the Python Data Model, operator overloading, and the instrospection and metaprogramming features of the language. For example, `Flask`_ uses function decorators pretty much everywhere. Speaking of Web frameworks, consider this simple Django model class::
+
+    class Movie(models.Model):
+    
+        title = models.CharField(max_length=255)
+        year = models.PositiveIntegerField()
+    
+        class Meta:
+            ordering = ('title', 'year')
+            unique_together = ('title', 'year')
+   
+        def __str__(self):
+            return '{} ({})'.format()
+
+What does that assigment to ``title`` really mean? How about the inner class, is that a metaclass? And how does Django process it? Short answers: the ``model.CharField`` class is a descriptor, the inner class is not a metaclass and Django reads its attributes through introspection of the model class body at import time. A descriptor is bound to a class attribute, as the assignment suggests, but its goal is to control access to instance attributes -- the fields of individual records in the ``Movie`` model. Django uses the metaclass mechanism of Python behind the scenes to perform much of the magic of its ORM, but there is no hint of that in the example code. Descriptors, introspection and metaclasses are some of the advanced Python features you won't see in the official Python tutorial or in introductory courses and books. Also, knowing the distinction between "import time" and "run time" is a key for non-trivial Python programming, including function decorators and all the advanced features I just mentioned.
+
+To make the most of the best frameworks and libraries available for Python -- and to create the next big hit on PyPI -- you need m... 
+
+
+
+
+
+Python data model and metaprogramming features such as attribute descriptors, decorators and metaclasses.  
 
 
 #_ Prevent bugs
@@ -43,7 +74,7 @@ Tinkering with the index variable invites bugs. The idiomatic solution to this e
 
 Another common reason for manually computing index values manually is iterating over two or more sequences in parallel. That use case is covered by the ``zip`` built-in generator. Again, no index variable needed.
 
-The ``with`` construct is another feature that prevents bugs: a spring-loaded mechanism that closes files, releases locks and reverts configurations temporarily changed. An tuple unpacking, eminently Pythonic, catches bugs early by making sure the number of items provided match exactly the number of items expected. These are just some of the bug-saving features built in the language. Use them well.
+The ``with`` construct is another feature that prevents bugs: a spring-loaded mechanism that closes files, releases locks and creates . An tuple unpacking, eminently Pythonic, catches bugs early by making sure the number of items provided match exactly the number of items expected. These are just some of the bug-saving features built in the language. Use them well.
 
 
 #2 Leverage new features and APIs
@@ -51,12 +82,24 @@ The ``with`` construct is another feature that prevents bugs: a spring-loaded me
 
 I've been witnessing the evolution of Python since 1998, and what I've seen is harmonious, consistent and significant progress. So it's always been worthwhile to keep up with what's new in the language and the standard library. Recently I fixed script that read CSV files simply by tweaking it to run in Python 3, because the standard library ``csv`` module in Python 2 does not handle Unicode well. However, if we rely primarily on blog posts, StackOverflow answers and hearsay to learn how to use Python we may not always get the most up-do-date solutions.
 
-There are a lot of myths and misconceptions regarding Python concurrency ... Yes, there is a GIL (global interpreter lock) that prevents multiple Python threads from running in parallel, but that is almost irrelevant for I/O bound systems, especially for network I/O, given the high latency of TCP/IP. That's why Node.js with its single application thread manages to scale. If you're comfortable with threads and locks, you can use them profitably for network programming in Python. Many prefer to complexity inherent in threads...  
-
-Meanwhile, the ``concurrent.futures`` package added in Python 3.2 -- also available for Python 2.7 as the ``futures`` package in PyPI -- makes threads almost trivial to use for many use cases. It also supports processes, bypassing the GIL and leveraging available CPU cores for compute-intensive tasks. The``asyncio`` package bundled in Python 3.4 -- also for 3.3, from PyPI -- allows efficient, asynchronous programming the same ideas that made Node.js famous, but with a much more pleasant, maintainable and safe coding style, using co-routines and futures natively. No need to look into the abyss of callback hell. If you're stuck with Python 2 but considering new developments in Node.js, take a deep look at ``asyncio`` and it's growing eco-system of external libraries.
 
 
 Only rarely I've seen new features that were not real improvements. The transition from Python 1.6 to 2.0 was remarkably smooth. The jump to 3.0 was traumatic, but I 
+
+#X Better performance
+
+Intelligent use of built-in types can make your programs run much faster. For example, the various set operators can save you from writing many lines of code, and they are built with extensively tested C code -- so those operators can reliably handle millions of items per second. Arrays can replace lists while saving memory, and also allow faster operations. The `struct` module allows high-level, yet efficient processing of binary data, and the `memoryview` type lets you do it all while sharing memory, avoiding much unnecessary data hauling. Beyond the built-ins, libraries like NumPy and `pandas` provide very powerful, highly optimized data structures and functions to process them using all available cores of your machine.
+
+Besides efficient data structures, Python also provides modern control structures that you may not have seen elsewhere. With the `yield` keyword we can write functions that may be suspended and resumed later. This is the basis of generator functions like those in the itertools module that can handle streams of data of any size on-demand, without wasting memory or CPU cycles. Once you get the hang of `yield`, you'll discover new ways of organizing your code to handle large data sets.
+
+Generator functions can also be used as coroutines for concurrent programming. The ``asyncio`` package bundled in Python 3.4` -- also for 3.3, from PyPI -- allows efficient, asynchronous programming the same ideas that made Node.js famous, but with a much more pleasant, maintainable and safe coding style, using coroutines and futures natively. No need to look into the abyss of callback hell. If you're stuck with Python 2 but considering new projects in Node.js for asynchronous network programming, take a deep look at ``asyncio`` and its young but growing eco-system of external libraries. The well-established Tornado asynchronous framework is now compatible with `asyncio`, so you can mix and match features of both.
+
+Speaking of concurrency, there are some myths and misconceptions regarding Python concurrency... Some regard threads in Python as useless because of the GIL -- the Global Interpreter Lock which prevents multiple Python threads from running in parallel. However, the GIL has a small impact on I/O bound systems, especially for network I/O, given the high latency of TCP/IP. That's why Node.js with its single application thread manages to scale. If you prefer to use threads instead of `asyncio` you'll be happy to know that every I/O function in the Python standard library releases the GIL while waiting for a response from the OS, I/O bound threads actually do make progress in parallel thanks to the concurrency features of the underlying OS network stack. Therefore, if you're comfortable with threads and locks, you can use them profitably for network programming in Python. But before settling on the traditional way of doing things with the ``threading`` module, take the time to study the new ``concurrent.futures`` package added in Python 3.2 -- also available for Python 2.7 as the ``futures`` package in PyPI. That package makes threads almost trivial to use for many use cases. It also supports processes, bypassing the GIL and leveraging available CPU cores for compute-intensive tasks.
+
+
+
+
+
 
 
 
