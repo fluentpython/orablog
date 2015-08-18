@@ -1,12 +1,10 @@
 from concurrent import futures
 from requests import get
 
-orgs = 'acm gnu eff wwf msf care ceres'.split()
+orgs = 'acm care ceres eff gnu msf wwf'.split()
 urls = ('http://www.%s.org' % org for org in orgs)
 
 with futures.ThreadPoolExecutor(len(orgs)) as executor:
-    results = list(executor.map(get, urls))
-
-for page in results:
-    length = int(page.headers['Content-Length'])
-    print('{:5} {}'.format(length, page.url))
+    for page in executor.map(get, urls):
+        length = int(page.headers['Content-Length'])
+        print('{:5} {}'.format(length, page.url))
